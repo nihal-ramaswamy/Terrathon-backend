@@ -36,7 +36,7 @@ exports.upload = (req, res, next) => {
 // get all data
 exports.retrieve = (req, res, next) => {
     Participant.find()
-        .select("_id name team registered breakfast lunch dinner review1 review2 review3")
+        .select("_id name team registered breakfast lunch dinner snacks review1 review2 review3")
         .exec()
         .then(docs => {
             const response = {
@@ -72,7 +72,7 @@ exports.retrieveByID = (req, res, next) => {
     let response, status;
     const id = req.params.id;
     Participant.find({"_id": id})
-        .select("_id name team registered breakfast lunch dinner review1 review2 review3")
+        .select("_id name team registered breakfast lunch dinner snacks review1 review2 review3")
         .exec()
         .then(docs => {
             const response = {
