@@ -16,6 +16,7 @@ exports.upload = (req, res, next) => {
         review1: req.body.review1,
         review2: req.body.review2,
         review3: req.body.review3,
+        review4: req.body.review4,
     });
     participant
         .save()
@@ -36,7 +37,7 @@ exports.upload = (req, res, next) => {
 // get all data
 exports.retrieve = (req, res, next) => {
     Participant.find()
-        .select("_id name team registered breakfast lunch dinner snacks review1 review2 review3")
+        .select("_id name team registered breakfast lunch dinner snacks review1 review2 review3 review4")
         .exec()
         .then(docs => {
             const response = {
@@ -54,6 +55,7 @@ exports.retrieve = (req, res, next) => {
                         review1: doc.review1,
                         review2: doc.review2,
                         review3: doc.review3,
+                        review4: doc.review4,
                     }
                 })
             }
@@ -72,7 +74,7 @@ exports.retrieveByID = (req, res, next) => {
     let response, status;
     const id = req.params.id;
     Participant.find({"_id": id})
-        .select("_id name team registered breakfast lunch dinner snacks review1 review2 review3")
+        .select("_id name team registered breakfast lunch dinner snacks review1 review2 review3 review4")
         .exec()
         .then(docs => {
             const response = {
@@ -90,6 +92,7 @@ exports.retrieveByID = (req, res, next) => {
                         review1: doc.review1,
                         review2: doc.review2,
                         review3: doc.review3,
+                        review4: doc.review4,
                     }
                 })
             }
@@ -135,6 +138,7 @@ exports.updateByID = (req, res, next) => {
         review1: req.body.review1,
         review2: req.body.review2,
         review3: req.body.review3,
+        review4: req.body.review4,
                     }
     Participant.updateOne({"_id": id}, body, function(err, result) {
         if (err) {

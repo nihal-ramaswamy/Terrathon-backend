@@ -42,6 +42,10 @@ var participantsSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
+    review4: {
+        type: Boolean,
+        required: true
+    },
 });
 
 module.exports = new mongoose.model('Participants', participantsSchema);
